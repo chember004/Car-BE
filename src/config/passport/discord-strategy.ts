@@ -4,7 +4,7 @@ import { DiscordUser } from "../../models/mongoose/schemas/discord-user";
 
 passport.serializeUser((user, done) => {
   //call serializer once ex. login
-  console.log(`Inside serialize user`);
+  console.log(`Inside serialize user discord`);
   console.log(user);
   done(null, (user as { id: string }).id);
 });

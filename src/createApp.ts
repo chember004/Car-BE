@@ -37,17 +37,6 @@ export const createApp = () => {
   app.use(passport.session());
   //ROUTES
   app.use(routes);
-  //SESSION TEST in HOME
-  app.get("/", (request: Request, response: Response) => {
-    console.log(request.session);
-    console.log("home session id ", request.session.id);
-    // request.session.visited = true;
-    response.cookie("cookie", "cookie monster", {
-      maxAge: 30000,
-      signed: true,
-    });
-    response.status(200).send(request.session);
-  });
 
   return app;
 };
