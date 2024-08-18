@@ -1,12 +1,13 @@
 import { Router } from "express";
 import userRoute from "./users";
 import productsRouter from "./products";
-import authRouter from "./auth";
-
+import authRouterMongoose from "./authMongoose";
+import authRouterPostgresql from "./authPostgresql";
 const router = Router();
 
 router.use(userRoute);
 router.use(productsRouter);
-router.use(authRouter);
+router.use(authRouterMongoose);
+router.use(authRouterPostgresql);
 
 export default router;

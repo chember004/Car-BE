@@ -1,13 +1,13 @@
-import mongoose from "mongoose";
 import { createApp } from "./createApp";
+import { mongooDbConnect } from "./server/mongodb";
+import { postgresqlConnect } from "./server/postgresql";
+// import { pool } from "./server/postgresql";
 
-mongoose
-  .connect("mongodb://127.0.0.1/car_be")
-  .then(() => console.log("Connected to the database"))
-  .catch((err) => console.log(`Error: ${err}`));
+mongooDbConnect();
+postgresqlConnect();
 const app = createApp();
-const PORT = process.env.PORT || 3000;
 
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Running on PORT ${PORT}`);
 });

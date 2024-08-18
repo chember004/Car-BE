@@ -1,7 +1,7 @@
 import passport from "passport";
 import * as passportStrategy from "passport-local";
-import { User } from "../mongoose/schemas/user.model";
-import { comparePassword } from "../utils/helpers";
+import { User } from "../../models/mongoose/schemas/local-user";
+import { comparePassword } from "../../utils/helpers";
 
 passport.serializeUser((user, done) => {
   // Call serializer once e.g. login
