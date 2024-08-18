@@ -5,7 +5,7 @@ import { comparePassword } from "../../utils/helpers";
 
 passport.serializeUser((user, done) => {
   // Call serializer once e.g. login
-  console.log(`Inside serialize user`);
+  console.log(`Inside serialize user local`);
   console.log(user);
   done(null, (user as { id: string }).id); // Use type assertion
 });
