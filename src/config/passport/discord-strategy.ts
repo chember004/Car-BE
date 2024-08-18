@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy } from "passport-discord";
-import { DiscordUser } from "../mongoose/schemas/discord-user";
+import { DiscordUser } from "../../models/mongoose/schemas/discord-user";
 
 passport.serializeUser((user, done) => {
   //call serializer once ex. login

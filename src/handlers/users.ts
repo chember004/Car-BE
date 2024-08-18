@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { CreateUserDto, UserIdQueryParams } from "../types/users";
 import { matchedData, validationResult } from "express-validator";
 import { hashPassword } from "../utils/helpers";
-import { User } from "../mongoose/schemas/user.model";
+import { User } from "../models/mongoose/schemas/local-user";
 
 export const getUsers = async (req: Request, res: Response) => {
   const getUsers = await User.find();

@@ -5,13 +5,16 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import passport from "passport";
-import "./strategies/local-strategy";
+
+import "./config/passport/local-strategy";
+// import "./config/passport/postgressql-strategy";
 // import "./strategies/discord-strategy.mjs";
 export const createApp = () => {
   const app = express();
 
   //todo query
   app.use(express.json()); //parsing to JSON data
+  app.use(express.urlencoded({ extended: true }));
   app.use(cookieParser("secret"));
   app.use(
     session({
@@ -32,9 +35,9 @@ export const createApp = () => {
   );
   app.use(passport.initialize());
   app.use(passport.session());
-
+  //ROUTES
   app.use(routes);
-
+  //SESSION TEST in HOME
   app.get("/", (request: Request, response: Response) => {
     console.log(request.session);
     console.log("home session id ", request.session.id);
@@ -43,7 +46,7 @@ export const createApp = () => {
       maxAge: 30000,
       signed: true,
     });
-    response.status(200).send("Hello World!");
+    response.status(200).send(request.session);
   });
 
   return app;
