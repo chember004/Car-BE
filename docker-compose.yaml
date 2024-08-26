@@ -1,9 +1,19 @@
 version: "3"
+# Services
 services:
-  # my-app:
-  # image: ${docker-registry}/my-app:1.0
-  # ports:
-  # - 3000:3000
+  # Server service
+  server:
+    build:
+      context: ./CAR-BE
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "8060:8060"
+    env_file: ./.env
+    environment:
+      - DB_HOST=mongodb
+    depends_on:
+      - mongodb
   mongodb:
     image: mongo
     container_name: mongo
