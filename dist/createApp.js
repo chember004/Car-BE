@@ -32,7 +32,9 @@ const createApp = () => {
             maxAge: 60000 * 60,
         },
         store: connect_mongo_1.default.create({
+            // @ts-ignore TS2322
             client: mongoose_1.default.connection.getClient(),
+            stringify: false,
         }),
     }));
     app.use(passport_1.default.initialize());

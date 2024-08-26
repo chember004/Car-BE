@@ -1,33 +1,19 @@
-# FROM node:20-alpine
+FROM node:19-alpine
 
-# ENV MONGO_DB_USERNAME=admin \
-#     MONGO_DB_PWD=password
+# We use nodemon to restart the server every time there's a change
+RUN npm install -g typescript
+RUN npm install -g nodemon
+# RUN npx tsc --init
 
-# RUN mkdir -p /home/app
-
-# COPY . /home/app
-
-# # will execute npm install in /home/app because of WORKDIR
-# RUN npm install
-
-# # no need for /home/app/server.js because of WORKDIR
-# CMD ["node", "/home/app/server.js"]
-FROM node:20-alpine
-
-ENV MONGO_DB_USERNAME=admin \
-    MONGO_DB_PWD=password
-
-RUN mkdir -p /home/app
-
-COPY . /home/app
-
-# set default dir so that next commands executes in /home/app dir
 WORKDIR /home/app
 
-# will execute npm install in /home/app because of WORKDIR
+COPY package.json .
 RUN npm install
 
-# no need for /home/app/server.js because of WORKDIR
-# CMD ["node", "./dist/index.js"]
-CMD npm run start
+COPY . .
+RUN npm run build
 
+EXPOSE 8060
+
+# Use script specified in package,json
+CMD ["npm", "run", "start"]
