@@ -1,10 +1,10 @@
 import { createApp } from "./createApp";
-import { mongooDbConnect } from "./server/mongodb";
-import { postgresqlConnect } from "./server/postgresql";
+import { mongooDbConnect } from "./db/mongodb";
+import { postgresqlConnect } from "./db/postgresql";
 // import { pool } from "./server/postgresql";
 
 mongooDbConnect();
-postgresqlConnect();
+// postgresqlConnect();
 const app = createApp();
 
 const PORT = process.env.PORT || 8080;
