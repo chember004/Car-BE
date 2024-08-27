@@ -7,6 +7,7 @@ import { User } from "../models/mongoose/schemas/local-user";
 export const getUsers = async (req: Request, res: Response) => {
   const getUsers = await User.find();
   return res.send(getUsers);
+  // return res.send([]);
 };
 export const getUserById = async (
   req: Request<UserIdQueryParams, {}, {}>,
