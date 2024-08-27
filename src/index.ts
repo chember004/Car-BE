@@ -1,7 +1,6 @@
 import { createApp } from "./createApp";
 import { mongooDbConnect } from "./db/mongodb";
 // import { postgresqlConnect } from "./db/postgresql";
-// import { pool } from "./server/postgresql";
 
 mongooDbConnect();
 // postgresqlConnect();
