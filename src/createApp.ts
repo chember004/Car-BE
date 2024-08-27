@@ -29,7 +29,9 @@ export const createApp = () => {
         maxAge: 60000 * 60,
       },
       store: MongoStore.create({
+        // @ts-ignore TS2322
         client: mongoose.connection.getClient(),
+        stringify: false,
       }),
     })
   );
